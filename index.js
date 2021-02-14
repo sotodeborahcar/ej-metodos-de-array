@@ -4733,8 +4733,8 @@ console.log("🐠 artistas Solistas", artistasPorSolista(artistas));
 // artistas por edad:
 // artistasPorEdad, que tome un parámetro "edad" y un array de artistas y devuelva un array con les artistas que tengan dicha edad
 
-const artistasPorEdad = (edad, array) => {
-  const artistaFiltrados = array.filter((artista) => {
+const artistasPorEdad = (edad, artistas) => {
+  const artistaFiltrados = artistas.filter((artista) => {
     return artista.edad === edad;
   });
   return artistaFiltrados;
@@ -4763,15 +4763,7 @@ const artistasConMasDiscosQue2 = (array, cantidadDeDiscos) => {
   const artistasConMasDeCincoDiscos = array.filter((artista) => {
     return artista.discos.length >= cantidadDeDiscos;
   });
-  // .sort((a, b) => {
-  //   if (a.discos.length > b.discos.length) {
-  //     return 1;
-  //   } else if (a.discos.length < b.discos.length) {
-  //     return -1;
-  //   } else {
-  //     return 0;
-  //   }
-  // });
+
   return artistasConMasDeCincoDiscos;
 };
 console.log(
@@ -4873,8 +4865,9 @@ console.log(
 const cantidadDeArtistasPorInstrumento = (array) => {
   const cantidadDeArtistas = array.reduce((acc, curr) => {
     if (!acc[curr.instrumento]) {
+      // if (en el objeto no existe artista.instrumento)
       acc[curr.instrumento] = 1;
-      // agregar artista.instrumento al objeto
+      //  agregar artista.instrumento al objeto
     } else {
       acc[curr.instrumento] = acc[curr.instrumento] + 1;
       // agregarle + 1 al valor de artista.instrumento
@@ -4888,6 +4881,7 @@ console.log(
   "🐠 cantidad De Artistas Por Instrumento",
   cantidadDeArtistasPorInstrumento(artistas)
 );
+// lo que entrega por cada array es un elemento de un objeto nuevo => {bateria: 2, guitarra: 4, voz: 5......}
 
 // cantidadDeArtistasPorGenero, que tome por parámetro un array de artistas
 //y devuelva un objeto donde cada "género" es una propiedad
